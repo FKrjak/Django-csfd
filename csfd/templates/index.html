@@ -1,0 +1,26 @@
+{% load to_and %}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    {% if movies or actors%}
+    <div style="display: flex; gap: 20px;padding-top: 50px;">
+        <div style="border: 1px black solid;width:500px;height: 500px;display:flexbox;">
+            <div style="font-size: 3rem;display:flex;justify-content: center;">Filmy</div>
+            {% for i in movies %}
+            <div>
+                <a href="/movie/{{ i.unaccent_movie_name|to_and }}">{{i}}</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="border: 1px black solid;width:500px;height: 500px;display:flexbox;">
+            <div style="font-size: 3rem;display:flex;justify-content: center;">Herci</div>
+            {% for i in actors %}
+            <div>
+                <a href="/actor/{{ i.unaccent_name|to_and }}">{{i}}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</form>

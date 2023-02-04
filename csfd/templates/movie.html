@@ -1,0 +1,10 @@
+{% load to_and %}
+<div style="display: flexbox">
+    <div style="font-size: 3rem;display:flex;justify-content: center;">{{ movie.movie_name}}</div>
+    <div style="font-size: 1.5rem;display:flex;padding-top: 50px;padding-bottom: 25px;">Herci:</div>
+    {% for i in actors %}
+    <div>
+        <a href="/actor/{{ i.unaccent_name|to_and }}">{{i}}</a>
+    </div>
+    {% endfor %}
+</div>
